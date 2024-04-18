@@ -6,7 +6,7 @@
 /*   By: iel-fagh <iel-fagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 12:14:49 by iel-fagh          #+#    #+#             */
-/*   Updated: 2024/04/18 06:51:41 by iel-fagh         ###   ########.fr       */
+/*   Updated: 2024/04/18 21:22:43 by iel-fagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void    ft_kill(int pid, int sign)
     }
 }
 
-static void	send_signal(int pid, unsigned char *str)
+static void	send_signal(int pid, char *str)
 {
     int i;
     int j;
@@ -39,9 +39,10 @@ static void	send_signal(int pid, unsigned char *str)
                 ft_kill(pid, SIGUSR1);
             else
                 ft_kill(pid, SIGUSR2);
-            usleep(450);
+            usleep(200);
             j--;
         }
+		usleep(340);
         i++;
     }
 }
@@ -49,7 +50,7 @@ static void	send_signal(int pid, unsigned char *str)
 int main(int ac, char **av)
 {
     int pid;
-    unsigned char   *string;
+    // unsigned char   *string;
 
     if (ac != 3)
     {
@@ -57,12 +58,12 @@ int main(int ac, char **av)
         return (1);
     }
     pid = ft_atoi(av[1]);
-    string = av[2];
+    // string = (unsigned char *)av[2];
     if (pid <= 0)
     { 
         write(1, "Invalid PID\n", 12);
 		return (1);
     }
-    send_signal(pid, string);
+    send_signal(pid, av[2]);
     return (0);
 }
