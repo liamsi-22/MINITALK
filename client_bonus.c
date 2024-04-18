@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iel-fagh <iel-fagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/07 12:14:49 by iel-fagh          #+#    #+#             */
-/*   Updated: 2024/04/18 06:51:41 by iel-fagh         ###   ########.fr       */
+/*   Created: 2024/04/17 06:12:14 by iel-fagh          #+#    #+#             */
+/*   Updated: 2024/04/18 09:06:43 by iel-fagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include <time.h>
 
 static void    ft_kill(int pid, int sign)
 {
@@ -22,24 +21,36 @@ static void    ft_kill(int pid, int sign)
     }
 }
 
+static void signal_handler(int sig)
+{
+    int i;
+    
+    if (sig == SIGUSR1)
+    {
+        write(1,"1 Byte sent\n",12);
+        usleep(1500);
+    }
+    
+}
+
 static void	send_signal(int pid, unsigned char *str)
 {
     int i;
     int j;
     int bit;
-
+    
     i = 0;
     while (str[i])
     {
         j = 7;
-        while(j >= 0)
+        while (j >= 0)
         {
-            bit = (str[i] >> j) & 1;
+            bit = str[i] >> j & 1;
             if (bit)
                 ft_kill(pid, SIGUSR1);
             else
-                ft_kill(pid, SIGUSR2);
-            usleep(450);
+                ft_kill(pid,SIGUSR2);
+            usleep(500);
             j--;
         }
         i++;
@@ -50,18 +61,19 @@ int main(int ac, char **av)
 {
     int pid;
     unsigned char   *string;
-
+    
     if (ac != 3)
     {
         write(1, "wrong number of arguments !", 27);
         return (1);
     }
+    signal(SIGUSR1, signal_handler);
     pid = ft_atoi(av[1]);
     string = av[2];
     if (pid <= 0)
-    { 
+    {
         write(1, "Invalid PID\n", 12);
-		return (1);
+        return (1);
     }
     send_signal(pid, string);
     return (0);

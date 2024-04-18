@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-fagh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: iel-fagh <iel-fagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 12:14:56 by iel-fagh          #+#    #+#             */
-/*   Updated: 2024/04/13 11:50:45 by iel-fagh         ###   ########.fr       */
+/*   Updated: 2024/04/18 09:24:04 by iel-fagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	signal_handler(int sig)
+static void	signal_handler(int sig)
 {
-	static char	number;
-	static int i;
+	static unsigned char	number;
+	static int	i;
 
 	number |= (sig == SIGUSR1);
 	i++;
@@ -34,7 +34,9 @@ int main (void)
 	int	pid;
 
 	pid = getpid();
-	ft_printf("Process ID is : %d\n",pid);
+ 	write(1, "Process ID is : ",16);
+    ft_putnbr(pid);
+    write(1, "\n", 1);
 	signal(SIGUSR1,signal_handler);
 	signal(SIGUSR2,signal_handler);
 	while (1)
