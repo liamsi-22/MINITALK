@@ -6,7 +6,7 @@
 #    By: iel-fagh <iel-fagh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 18:03:33 by pclaus            #+#    #+#              #
-#    Updated: 2024/04/18 21:19:30 by iel-fagh         ###   ########.fr        #
+#    Updated: 2024/04/19 08:26:40 by iel-fagh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CFLAGS = -Wall -Wextra -Werror
 RV = rm
 
 %.o : %.c
-	$(CC) $(CFALGS) -c $^ -o $@
+	$(CC) $(CFLAGS) -c $^ -o $@
 
 all: $(NAME)
 
@@ -41,19 +41,12 @@ server: $(OBJ_SERVER)
 
 bonus: server_bonus client_bonus 
 
+server_bonus: $(OBJ_SERVER_BONUS)
+	$(CC) $(CFLAGS) $^ -o $@
+	
 client_bonus: $(OBJ_CLIENT_BONUS)
 	$(CC) $(CFLAGS) $^ -o $@
 
-server_bonus: $(OBJ_SERVER_BONUS)
-	$(CC) $(CFLAGS) $^ -o $@
-
-$(NAME): $(OBJ_CLIENT) $(OBJ_SERVER)
-	$(CC) $(CFLAGS) -c $(OBJ_CLIENT) -o client
-	$(CC) $(CFLAGS) -c $(OBJ_SERVER) -o server
-
-bonus: $(OBJ_CLIENT_BONUS) $(OBJ_SERVER_BONUS)
-	$(CC) $(CFALGS) -c (OBJ_CLIENT_BONUS) -o client_bonus
-	$(CC) $(CFALGS) -c (OBJ_SERVER_BONUS) -o server_bonus
 clean:
 	$(RV) -f $(OBJ_CLIENT) $(OBJ_SERVER) $(OBJ_CLIENT_BONUS) $(OBJ_SERVER_BONUS)
 

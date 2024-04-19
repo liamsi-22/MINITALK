@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server_bonuc.c                                     :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iel-fagh <iel-fagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 06:12:17 by iel-fagh          #+#    #+#             */
-/*   Updated: 2024/04/18 09:23:59 by iel-fagh         ###   ########.fr       */
+/*   Updated: 2024/04/19 08:36:57 by iel-fagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void signal_handler(int sig, siginfo_t *info, void *ctx)
     i++;
     if (i == 8)
     {
-        write(1, &number, 1);
+        write(STDOUT_FILENO, &number, 1);
         kill(info->si_pid, SIGUSR1);
         number = 0;
         i = 0;

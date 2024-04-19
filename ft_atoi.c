@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-fagh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: iel-fagh <iel-fagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 11:00:16 by iel-fagh          #+#    #+#             */
-/*   Updated: 2024/04/13 11:12:23 by iel-fagh         ###   ########.fr       */
+/*   Updated: 2024/04/19 08:26:00 by iel-fagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_atoi(const char *nbr)
-{
+{	
+	int sign;
 	int x;
 	int i;
-	int sign;
 
 	sign = 1;
 	i = 0;

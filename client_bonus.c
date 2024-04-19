@@ -6,7 +6,7 @@
 /*   By: iel-fagh <iel-fagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 06:12:14 by iel-fagh          #+#    #+#             */
-/*   Updated: 2024/04/18 21:04:36 by iel-fagh         ###   ########.fr       */
+/*   Updated: 2024/04/19 08:10:51 by iel-fagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ static void    ft_kill(int pid, int sign)
 }
 
 static void signal_handler(int sig)
-{
-    int i;
-    
+{   
     if (sig == SIGUSR1)
     {
         write(1,"1 Byte sent\n",12);
