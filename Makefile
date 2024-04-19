@@ -6,7 +6,7 @@
 #    By: iel-fagh <iel-fagh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 18:03:33 by pclaus            #+#    #+#              #
-#    Updated: 2024/04/19 08:26:40 by iel-fagh         ###   ########.fr        #
+#    Updated: 2024/04/19 16:06:37 by iel-fagh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 RV = rm
 
-%.o : %.c
+.o : .c
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 all: $(NAME)

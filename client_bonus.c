@@ -6,7 +6,7 @@
 /*   By: iel-fagh <iel-fagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 06:12:14 by iel-fagh          #+#    #+#             */
-/*   Updated: 2024/04/19 08:10:51 by iel-fagh         ###   ########.fr       */
+/*   Updated: 2024/04/19 17:06:11 by iel-fagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void signal_handler(int sig)
 {   
     if (sig == SIGUSR1)
     {
-        write(1,"1 Byte sent\n",12);
-        //usleep(1500);
+        write(1,"sent 1 Byte\n",12);
+        usleep(2800);
     }
     
 }
@@ -48,10 +48,10 @@ static void	send_signal(int pid, unsigned char *str)
                 ft_kill(pid, SIGUSR1);
             else
                 ft_kill(pid,SIGUSR2);
-            usleep(200);
+            usleep(700);
             j--;
         }
-		usleep(300);
+		//usleep(300);
         i++;
     }
 }
