@@ -6,29 +6,28 @@
 /*   By: iel-fagh <iel-fagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 11:00:16 by iel-fagh          #+#    #+#             */
-/*   Updated: 2024/04/19 08:26:00 by iel-fagh         ###   ########.fr       */
+/*   Updated: 2024/04/20 11:20:26 by iel-fagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_atoi(const char *nbr)
-{	
-	int sign;
-	int x;
-	int i;
+{
+	int	sign;
+	int	x;
+	int	i;
 
 	sign = 1;
 	i = 0;
 	x = 0;
-	while(nbr[i] == ' ' || (nbr[i] >= 9 && nbr[i] <=13))
+	while (nbr[i] == ' ' || (nbr[i] >= 9 && nbr[i] <= 13))
 		i++;
-
-	if(nbr[i] == '-' || nbr[i] == '+')
+	if (nbr[i] == '-' || nbr[i] == '+')
 	{
 		if (nbr[i] == '-')
 			sign *= -1;
 		i++;
 	}
-	while(nbr[i] >= '0' && nbr[i] <= '9')
+	while (nbr[i] >= '0' && nbr[i] <= '9')
 	{
 		x = x * 10 + (nbr[i] - '0');
 		i++;

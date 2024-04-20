@@ -6,7 +6,7 @@
 /*   By: iel-fagh <iel-fagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 09:08:42 by iel-fagh          #+#    #+#             */
-/*   Updated: 2024/04/18 09:16:58 by iel-fagh         ###   ########.fr       */
+/*   Updated: 2024/04/20 11:20:36 by iel-fagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	ft_putnbr(int n)
 {
 	if (n < 10)
-        ft_putchar((n % 10) + '0');
+		ft_putchar((n % 10) + '0');
 	else
 	{
-        ft_putnbr(n / 10);
-        ft_putnbr(n % 10);
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
 	}
 }
